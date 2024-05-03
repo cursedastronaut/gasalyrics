@@ -1,0 +1,40 @@
+:root {
+    --album-margin: 16px;
+    --album-icon-size:  256px;
+    --album-font-size:  x-large;
+    --album-block-width:calc( var(--album-icon-size) + 64px);
+}
+@media (pointer:none), (pointer:coarse) {
+	:root {
+		--album-margin: 16px;
+        --album-icon-size:  256px;;
+        --album-font-size:  xx-large;
+        --album-block-width:calc(50% - 5 * var(--album-margin));
+	}
+}
+
+.album_block {
+    text-decoration: none;
+	display: 	inline-block;
+	text-align: center;
+	font-size:	var(--album-font-size);
+	color:		black;
+	width:		var(--album-block-width);
+	margin:		var(--album-margin);
+	font-family: 'Montserrat', sans-serif;
+	background: white;
+    border-radius: 32px;
+    border: solid 1px;
+    border-color: #E5E5E5;
+    border-width: thin;
+    box-shadow: 2px 2px 5px gray;
+    padding: var(--album-margin);
+}
+
+.ablum_icon {
+	display: block;
+    height: var(--album-icon-size);
+    width: var(--album-icon-size);
+    background-color: red;
+    margin-inline: var(--album-margin);
+}

@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+:root {
+	--navbar-height:			96px;
+	--navbar-margin:			16px;
+	--logo-width:				623;
+	--logo-height:				336;
+}
+@media (pointer:none), (pointer:coarse) {
+	:root {
+		--navbar-height:			96px;
+		--navbar-margin:			16px;
+		--logo-width:				623;
+		--logo-height:				336;
+	}
+}
+
+
+header {
+	background: white;
+	border-radius: 32px;
+	border: solid 1px;
+	border-color: #E5E5E5;
+	border-width: thin;
+
+	box-shadow: 2px 2px 5px gray;
+
+	width: calc(100% - var(--navbar-margin) * 2);
+	/*height: var(--navbar-height);*/
+	margin:var(--navbar-margin) var(--navbar-margin) var(--navbar-margin) var(--navbar-margin);
+	z-index: 990;
+	position: inherit;
+	display:block;
+	padding:0;
+}
+
+header .logo {/*
+    border: none;
+    cursor:pointer;*/
+    background: url("https://gasalyrics.vercel.app/img/logo_623_336-PNG.png");
+    background-repeat: no-repeat;
+    background-size:contain;
+	width: calc(var(--logo-width) * var(--navbar-height) / var(--logo-height));
+	height:var(--navbar-height);
+}
+
+
+header button {
+	font-size: large;
+	font-family: 'Montserrat', sans-serif;
+    border: none;
+	height: var(--navbar-height);
+    background: none;
+    font-size: x-large;
+    cursor: pointer;
+
+	transition: 0.3s;
+}
+
+header button:hover {
+	background: rgba(1, 1, 1, 0.1);
+}
+
+header .logo:hover {
+	background: url("https://gasalyrics.vercel.app/img/logo_623_336-PNG.png");
+    background-repeat: no-repeat;
+    background-size:contain;
+	filter: drop-shadow(4px 4px 4px #E5E5E5);
+}
+
+header a {
+	margin:		0;
+	padding:	0;
+}
+
+kick {
+	display:block;
+	margin-top: var(--navbar-margin);
+	margin-bottom: var(--navbar-margin);
+	height:var(--navbar-height);
+	width: 100%;
+}
+
