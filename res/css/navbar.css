@@ -1,82 +1,104 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 :root {
+	--navbar-logo:				url("https://gasalyrics.vercel.app/img/logo_623_336-PNG.png");
 	--navbar-height:			96px;
 	--navbar-margin:			16px;
+	--navbar-bg-color:			white;
+	--navbar-border-radius:		32px;
+	--navbar-border-color:		#E5E5E5;
+	--navbar-shadow:			2px 2px 5px gray;
 	--logo-width:				623;
 	--logo-height:				336;
+
+	--navbar-font:				'Montserrat', sans-serif;
+	--navbar-font-size:			x-large;
+	--navbar-display:			flex;
+	--navbar-flex-direction:	row;
 }
-@media (pointer:none), (pointer:coarse) {
+@media (pointer:none), (pointer:coarse), screen and (max-width: 900px) {
 	:root {
 		--navbar-height:			96px;
 		--navbar-margin:			16px;
 		--logo-width:				623;
 		--logo-height:				336;
+		--navbar-font-size:			small;
 	}
 }
 
+@media (pointer:none), (pointer:coarse), screen and (max-width: 600px) {
+	:root {
+		--navbar-flex-direction:	column;
+		--navbar-font-size:			x-large;
+	}
+}
 
 header {
-	background: white;
-	border-radius: 32px;
-	border: solid 1px;
-	border-color: #E5E5E5;
-	border-width: thin;
+	background:		var(--navbar-bg-color);
+	border-radius:	var(--navbar-border-radius);
+	border:			solid 1px;
+	border-color:	var(--navbar-border-color);
+	border-width:	thin;
 
-	box-shadow: 2px 2px 5px gray;
+	box-shadow:		2px 2px 5px gray;
 
-	width: calc(100% - var(--navbar-margin) * 2);
-	/*height: var(--navbar-height);*/
-	margin:var(--navbar-margin) var(--navbar-margin) var(--navbar-margin) var(--navbar-margin);
-	z-index: 990;
-	position: inherit;
-	display:block;
-	padding:0;
+	width:			calc(100% - var(--navbar-margin) * 2);
+	margin:			var(--navbar-margin) var(--navbar-margin) var(--navbar-margin) var(--navbar-margin);
+	z-index:		990;
+	position:		inherit;
+	display:		var(--navbar-display);
+	flex-direction: var(--navbar-flex-direction);
+	padding:		0;
 }
 
-header .logo {/*
-    border: none;
-    cursor:pointer;*/
-    background: url("https://gasalyrics.vercel.app/img/logo_623_336-PNG.png");
-    background-repeat: no-repeat;
-    background-size:contain;
-	width: calc(var(--logo-width) * var(--navbar-height) / var(--logo-height));
-	height:var(--navbar-height);
+header .logo {
+	background:			var(--navbar-logo);
+	background-repeat:	no-repeat;
+	background-size:	contain;
+	width:				calc(var(--logo-width) * var(--navbar-height) / var(--logo-height));
+	height:				var(--navbar-height);
 }
 
-
-header button {
-	font-size: large;
-	font-family: 'Montserrat', sans-serif;
-    border: none;
-	height: var(--navbar-height);
-    background: none;
-    font-size: x-large;
-    cursor: pointer;
-
-	transition: 0.3s;
+header button, header a:not(a[href="index.php"]) {
+	font-size:			var(--navbar-font-size);
+	font-family:		var(--navbar-font);
+	border:				none;
+	color:				black;
+	background:			none;
+	cursor:				pointer;
+	transition:			0.3s;
+	width:				100%;
+	padding-top:		calc(var(--navbar-height)/2 - 16px);
+	margin:				0;
+	text-align:			center;
 }
 
-header button:hover {
+header a:last-of-type {
+    border-top-right-radius:	32px;
+    border-bottom-right-radius:	32px;
+}
+
+header button:hover, header a:not(a[href="index.php"]):hover {
 	background: rgba(1, 1, 1, 0.1);
 }
 
 header .logo:hover {
-	background: url("https://gasalyrics.vercel.app/img/logo_623_336-PNG.png");
-    background-repeat: no-repeat;
-    background-size:contain;
-	filter: drop-shadow(4px 4px 4px #E5E5E5);
+	background: 		var(--navbar-logo);
+	background-repeat:	no-repeat;
+	background-size:	contain;
+	filter:				drop-shadow(4px 4px 4px #E5E5E5);
 }
 
 header a {
-	margin:		0;
-	padding:	0;
+	margin:				0;
+	padding:			0;
+	text-decoration:	0;
 }
 
 kick {
-	display:block;
-	margin-top: var(--navbar-margin);
-	margin-bottom: var(--navbar-margin);
-	height:var(--navbar-height);
-	width: 100%;
+	display:			block;
+	margin-top:			var(--navbar-margin);
+	margin-bottom:		var(--navbar-margin);
+	height:				var(--navbar-height);
+	width:				100%;
 }
 
