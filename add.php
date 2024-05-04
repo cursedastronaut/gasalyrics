@@ -34,23 +34,23 @@
 		?>
 		<h1>Add lyrics</h1>
 		<form id="songToAdd" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" >
-			<label for="username">Utilisateur</label>
+			<button type="submit">Submit</button>
+			<label for="username">Username</label>
 			<input type="text" name="username"><br>
-			<label for="password">Mot de passe</label>
+			<label for="password">Password</label>
 			<input type="password" name="password"><br>
 			<br>
-			<label for="titleText">Titre anglais</label>
+			<label for="titleText">English Title</label>
 			<input type="text" name="titleText"><br>
-			<label for="titleOrText">Titre orignal</label>
+			<label for="titleOrText">Original title</label>
 			<input type="text" name="titleOrText" id="title0"><br>
-			<label for="albumText">Numéro de l'album</label>
+			<label for="albumText">Album number</label>
 			<input type="text" name="albumText"><br>
 			<hr>
-			<label for="langCode1">Code de langue</label>
+			<label for="langCode1">Language code</label>
 			<input type="text" name="langCode1"><br>
-			<label for="inputText1">Paroles</label>
+			<label for="inputText1">Lyrics</label>
 			<textarea type="text" name="inputText1" id="lyric1"></textarea><br>
-			<button type="submit">Submit</button>
 		</form>
 		<button class="add-language" onclick="createInput()">Add a language</button>
 
