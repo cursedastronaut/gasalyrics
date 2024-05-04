@@ -25,7 +25,7 @@
 
 	//Attempt connecting to the database with res/php/config.php's logins.
 	$db =	mysql_connect(GASALYRICS_URL, GASALYRICS_DBUSERNAME, GASALYRICS_DBPASSWORD)
-			or die("Could not connect to the database, make sure res/php/config.php is correct.");
+			or die("<b>FATAL:</b>Could not connect to the database, make sure <file>res/php/config.php</file> is correct.");
 	
 	//Attempting to select res/php/config.php's provided database.
 	mysql_select_db(GASALYRICS_DBNAME, $db) or
