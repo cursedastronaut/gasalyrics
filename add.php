@@ -18,15 +18,15 @@
 			$gs = new GasaLyricsDB();
 			echo $_POST["titleText"] . "<br>" . $_POST["titleOrText"] ."<br>" . $_POST["albumText"] . "<br>" . $_POST["langCode"] . "<br>" . $_POST["inputText1"] . "<br>" . $_POST["inputText2"];
 			echo "<br><br>";
-			$sql = "INSERT INTO Songs (titleSongs, titleOriginalSongs, albumIdSongs) VALUES ('" . $_POST["titleText"] . "','" . $_POST["titleOrText"] . "'," . $_POST["albumText"] . ")";
+			$sql = "INSERT INTO Songs (titleSongs, titleOriginalSongs, albumIdSongs) VALUES ('" . $gs->sanitize($_POST["titleText"]) . "','" . $gs->sanitize($_POST["titleOrText"]) . "'," . $gs->sanitize($_POST["albumText"]) . ")";
 			$result = $gs->askSQL($sql, $_POST["username"], $_POST["password"]);
-			$sql = "SELECT idSongs FROM Songs WHERE titleSongs='" . $_POST["titleText"] . "' AND titleOriginalSongs='" . $_POST["titleOrText"] . "' AND albumIdSongs=" . $_POST["albumText"];
+			$sql = "SELECT idSongs FROM Songs WHERE titleSongs='" . $gs->sanitize($_POST["titleText"]) . "' AND titleOriginalSongs='" . $gs->sanitize($_POST["titleOrText"]) . "' AND albumIdSongs=" . $gs->sanitize($_POST["albumText"]);
 			$result = $gs->askSQL($sql);
 			$row =  mysql_fetch_assoc($result);
 			$numSong = $row["idSongs"];
 			for ($numInputText = 1; !is_null($_POST["inputText" . ($numInputText)]); $numInputText++) 
 			{
-				$sql = "INSERT INTO Lyrics (langLyrics, contentLyrics, idSongsLyrics) VALUES ('" . $_POST["langCode" . $numInputText] . "', '" . $gs->replaceNewlinesByBR($_POST["inputText" . $numInputText]) . "',  " . $numSong . ")";
+				$sql = "INSERT INTO Lyrics (langLyrics, contentLyrics, idSongsLyrics) VALUES ('" . $gs->sanitize($_POST["langCode" . $numInputText]) . "', '" . $gs->sanitize($_POST["inputText" . $numInputText]) . "',  " . $numSong . ")";
 				$result = $gs->askSQL($sql, $_POST["username"], $_POST["password"]);
 				echo $sql . "<br>";
 			}
