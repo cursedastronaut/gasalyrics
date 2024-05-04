@@ -8,6 +8,11 @@
 ?>
 <h1>Edit lyrics</h1>
 <form id="songToAdd" action="<?php echo htmlspecialchars($_SERVER["manage.php?song_id=" . $_GET["song_id"]]);?>" method="POST" >
+	<label for="utilisateur">Utilisateur</label>
+	<input type="text" name="username"/><br>
+	<label for="password">Mot de passe</label>
+	<input type="password" name="password"/><br>
+	<br>
 	<label for="titleText">Titre anglais</label>
 	<input type="text" name="titleText" value="<?php echo $song["titleSongs"]; ?>"><br>
 	<label for="titleOrText">Titre orignal</label>
@@ -71,16 +76,16 @@ function createInput() {
 		. "WHERE idSongs=" . $_GET["song_id"] . ";";
 
 		$sql_get_lyrics = "SELECT idLyrics FROM Lyrics WHERE idSongsLyrics=" . $_GET["song_id"] . ";";
-		$result_get_lyrics = $gs->askSQL($sql);
+		$result_get_lyrics = $gs->askSQL($sql, $_POST["username"], $_POST["password"]);
 
 		while ($row =  mysql_fetch_assoc($result_get_lyrics)) {
 			$sqlLyrics = "UPDATE Lyrics SET contentLyrics='" . $_POST["inputText" . $row["idLyrics"]] . "', "
 				. "langLyrics='" . $_POST["langCode" . $row["idLyrics"]] . "' "
 				. "WHERE idLyrics=" . $row["idLyrics"] . ";";
-			$dummy2 = $gs->askSQL($sql);
+			$dummy2 = $gs->askSQL($sql, $_POST["username"], $_POST["password"]);
 		}
 
-		$dummy2 = $gs->askSQL($sql);
+		$dummy2 = $gs->askSQL($sql, $_POST["username"], $_POST["password"]);
 
 		echo "done!";
 	}
