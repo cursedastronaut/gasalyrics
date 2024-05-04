@@ -6,6 +6,7 @@
 	$result = $gs->getSongs(-1, $_GET["song_id"]);
 	if ($result == -1) {
 		$gs->Error404("Song");
+		die("");
 	}
 
 	

@@ -21,7 +21,6 @@ class GasaLyricsDB {
 	function getAlbums() {
 		$sql = "SELECT * from Album";
 		$result = $this->askSQL($sql);
-		
 		if ($result->num_rows < 0)
 			return -1;
 		return $result;
@@ -33,7 +32,7 @@ class GasaLyricsDB {
 		if (intval($songId) != 0 && is_int(intval($songId))) {
 			$songId = intval($songId);
 			//Select all song titles, their id, and album ids (including Symlinks).
-			$sql = "SELECT Songs.idSongs, Songs.titleSongs, Songs.titleOriginalSongs,	Songs.albumIdSongs from Songs LEFT JOIN Symlink ON Symlink.idSongs = Songs.idSongs ";
+			$sql = "SELECT Songs.idSongs, Songs.titleSongs, Songs.titleOriginalSongs, Songs.albumIdSongs from Songs LEFT JOIN Symlink ON Symlink.idSongs = Songs.idSongs ";
 			//If the album id is specified, we just list all the songs of the album.
 			if ($albumId != -1 && $songId == -1)
 				$sql = $sql . " AND Symlink.idAlbum = " . $albumId . " WHERE Songs.albumIdSongs=" . $albumId . " OR Symlink.idAlbum = "
@@ -43,9 +42,11 @@ class GasaLyricsDB {
 				$sql = $sql . " WHERE Songs.idSongs=" . $songId;
 
 			$sql = $sql . "\n ORDER BY titleSongs;";
-			$result = $this->askSQL($sql); 
-			if ($result->num_rows < 0)
+			$result = $this->askSQL($sql);
+			$row = mysql_fetch_assoc($result);
+			if (!isset($row["idSongs"]))
 				return -1;
+			mysql_data_seek($result, 0);
 			return $result;
 		}
 		else
