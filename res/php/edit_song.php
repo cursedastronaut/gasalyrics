@@ -72,8 +72,16 @@ function createInput() {
 
 <?php
 	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['formSubmitted']) && $_POST['formSubmitted'] == "1") {
-		$sql = "UPDATE Songs SET titleSongs='" . $gs->sanitize($_POST["titleText"]) . "', titleOriginalSongs='" . $gs->sanitize($_POST["titleOrText"]) . "', albumIdSongs=" . $gs->sanitize($_POST["albumText"]) . " "
-		. "WHERE idSongs=" . $_GET["song_id"] . ";";
+		$sql = "UPDATE Songs SET titleSongs='"
+		. $gs->sanitize($_POST["titleText"])
+		. "', titleOriginalSongs='"
+		. $gs->sanitize($_POST["titleOrText"])
+		. "', albumIdSongs="
+		. $gs->sanitize($_POST["albumText"])
+		. " "
+		. "WHERE idSongs="
+		. $_GET["song_id"]
+		. ";";
 
 		$sql_get_lyrics = "SELECT idLyrics FROM Lyrics WHERE idSongsLyrics=" . $_GET["song_id"] . ";";
 		$result_get_lyrics = $gs->askSQL($sql_get_lyrics, $_POST["username"], $_POST["password"]);
