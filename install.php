@@ -119,13 +119,15 @@
 		. ") ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
 
 		$sqlError = "<b>FATAL:</b> Could not create a required table. You will need to DROP the tables this script already created after fixing this.<br><b>SQL Error:</b>";
-
+		$sqlLanguagesInsert = file_get_contents("res/sql/languages.sql");
 		//Creating the tables, erroring if it failed.
-		mysql_query($sqlAlbum		) or die($sqlError . mysql_error() . "<br><br><b>SQL:</b>" . $sqlAlbum		. mysql_close());
-		mysql_query($sqlLanguages	) or die($sqlError . mysql_error() . "<br><br><b>SQL:</b>" . $sqlLanguage	. mysql_close());
-		mysql_query($sqlLyrics		) or die($sqlError . mysql_error() . "<br><br><b>SQL:</b>" . $sqlLyrics		. mysql_close());
-		mysql_query($sqlSongs		) or die($sqlError . mysql_error() . "<br><br><b>SQL:</b>" . $sqlSongs		. mysql_close());
-		mysql_query($sqlSymlink		) or die($sqlError . mysql_error() . "<br><br><b>SQL:</b>" . $sqlSymlink	. mysql_close());
+		mysql_query($sqlAlbum			) or die($sqlError				. mysql_error() . "<br><br><b>SQL:</b>" . $sqlAlbum				. mysql_close());
+		mysql_query($sqlLanguages		) or die($sqlError				. mysql_error() . "<br><br><b>SQL:</b>" . $sqlLanguage			. mysql_close());
+		mysql_query($sqlLyrics			) or die($sqlError				. mysql_error() . "<br><br><b>SQL:</b>" . $sqlLyrics			. mysql_close());
+		mysql_query($sqlSongs			) or die($sqlError				. mysql_error() . "<br><br><b>SQL:</b>" . $sqlSongs				. mysql_close());
+		mysql_query($sqlSymlink			) or die($sqlError				. mysql_error() . "<br><br><b>SQL:</b>" . $sqlSymlink			. mysql_close());
+		//Untested! Remove if causing problems!
+		mysql_query($sqlLanguagesInsert	) or die($sqlLanguagesInsert	. mysql_error() . "<br><br><b>SQL:</b>" . $sqlLanguagesInsert	. mysql_close());
 
 		mysql_close(); //Rest.
 
@@ -134,8 +136,6 @@
 				. "to add an album.<br>"
 				. "To add a song, go to the <a href='add.php'>Add Song page</a>.<br>"
 				. "To edit a song, go to the <a href='manage.php>Manage Songs page</a>.<br>"
-				. "<br><br><b>CRITICAL!!!</b> Run the script at <file>res/sql/languages.sql</file> to fill the"
-				. "Languages table as there is currently no way to do so through pages."
 				;
 
 		exit();
