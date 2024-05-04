@@ -58,7 +58,7 @@ header .logo {
 	height:				var(--navbar-height);
 }
 
-header button, header a:not(a[href="index.php"]) {
+header button {
 	font-size:			var(--navbar-font-size);
 	font-family:		var(--navbar-font);
 	border:				none;
@@ -73,12 +73,12 @@ header button, header a:not(a[href="index.php"]) {
 	text-align:			center;
 }
 
-header a:last-of-type {
+header button:last-of-type {
     border-top-right-radius:	32px;
     border-bottom-right-radius:	32px;
 }
 
-header button:hover, header a:not(a[href="index.php"]):hover {
+header button:hover {
 	background: rgba(1, 1, 1, 0.1);
 }
 
@@ -103,3 +103,32 @@ kick {
 	width:				100%;
 }
 
+
+.flex {
+	display: flex;
+}
+
+.sidebar {
+	display:			none;
+	position:			static;
+	z-index:			1000;
+	text-align:			right;
+	background-color:	black;
+	border-radius:		16px;
+	transition:			0.3s;
+}
+
+.sidebar a {
+	color:				white;
+	font-size:			xx-large;
+	display:			block;
+	font-family:		var(--navbar-font);
+	text-decoration:	none;
+	padding:			16px;
+	transition:			0.3s;
+}
+
+.sidebar a:hover {
+	background-color:	white;
+	color:				black;
+}
