@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+:root {
+	--body-margin:							8px;
+	--form-padding:							16px;
+	--form-margin:							var(--navbar-margin);
+	--form-border-radius:					32px;
+	--form-border:							1px solid #E5E5E5;
+	--form-shadow:							2px 2px 5px gray;
+	--form-width:							calc(
+												100% - var(--body-margin) * 2
+												- var(--form-padding) * 2
+												- var(--form-margin) * 2
+												);
+	--form-font:							'Montserrat', sans-serif;
+	--input-border-radius:					15px;
+	--input-border:							var(--form-border);
+	--input-padding-inline:					8px;
+	--input-padding-vertical:				4px;
+	--input-margin-bottom:					8px;
+	--input-shadow:							1px 1px 5px lightgrey;
+
+	--submit-light-color:					lawngreen;
+	--submit-border:						1px solid lightgray;
+	--submit-background-color:				darkgreen;
+	--submit-hover-color:					white;
+	--submit-hover-background-color:		darkgreen;
+
+	--addlanguage-background-color:			white;
+	--addlanguage-hover-background-color:	grey;
+}
+
+body {
+	margin:			var(--body-margin);
+}
+
+#songToAdd {
+	padding:		var(--form-padding);
+	margin:			var(--form-margin);
+	border-radius:	var(--form-border-radius);
+	border:			var(--form-border);
+	width:			var(--form-width);
+	box-shadow:		var(--form-shadow);
+}
+
+#songToAdd label {
+	display:		block;
+	font-family:	var(--form-font);
+}
+
+#songToAdd input[type=text], #songToAdd input[type=password], #songToAdd textarea {
+	border-radius:	var(--input-border-radius);
+	border:			var(--form-border);
+	padding-inline:	var(--input-padding-inline);
+	margin-bottom:	var(--input-margin-bottom);
+	padding-top:	var(--input-padding-vertical);
+	padding-bottom:	var(--input-padding-vertical);
+	font-family:	var(--form-font);
+	box-shadow:		var(--input-shadow);
+}
+
+#songToAdd button[type=submit] {
+	font-family:		var(--form-font);
+	background-color:	var(--submit-background-color);
+	border-radius:		var(--input-border-radius);
+	padding-inline:		var(--input-padding-inline);
+	padding-top:		var(--input-padding-vertical);
+	padding-bottom:		var(--input-padding-vertical);
+	border:				var(--submit);
+	box-shadow:			var(--input-shadow);
+	color:				var(--submit-light-color);
+	font-weight:		bold;
+	transition:			0.3s;
+}
+
+#songToAdd button[type=submit]:hover {
+	color:				var(--submit-hover-color);
+	background-color:	var(--submit-hover-background-color);
+	cursor:				pointer;
+}
+
+.add-language {
+	font-family:		var(--form-font);
+	background-color:	var(--addlanguage-background-color);
+	border-radius:		var(--input-border-radius);
+	padding-inline:		var(--input-padding-inline);
+	padding-top:		var(--input-padding-vertical);
+	padding-bottom:		var(--input-padding-vertical);
+	border:				var(--submit);
+	box-shadow:			var(--input-shadow);
+	color:				var(--addlanguage-hover-background-color);
+	font-weight:		bold;
+	transition:			0.3s;
+}
+
+.add-language:hover {
+	color:				var(--addlanguage-background-color);
+	background-color:	var(--addlanguage-hover-background-color);
+	cursor:				pointer;	
+}

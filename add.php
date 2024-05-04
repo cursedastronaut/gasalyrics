@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="./res/css/navbar.css"		type="text/css">
 		<link rel="stylesheet" href="./res/css/song_list.css"	type="text/css">
 		<link rel="stylesheet" href="./res/css/song.css"		type="text/css">
+		<link rel="stylesheet" href="./res/css/managing.css"		type="text/css">
 	</head>
 	<body>
 		<?php include_once("res/php/navbar.php") ?>
@@ -33,25 +34,25 @@
 		?>
 		<h1>Add lyrics</h1>
 		<form id="songToAdd" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" >
-			Utilisateur
+			<label for="username">Utilisateur</label>
 			<input type="text" name="username"><br>
-			Mot de passe
+			<label for="password">Mot de passe</label>
 			<input type="password" name="password"><br>
 			<br>
-			Titre anglais
+			<label for="titleText">Titre anglais</label>
 			<input type="text" name="titleText"><br>
-			Titre orignal
-			<input type="text" id="title0" name="titleOrText"><br>
-			Numéro de l'album
+			<label for="titleOrText">Titre orignal</label>
+			<input type="text" name="titleOrText" id="title0"><br>
+			<label for="albumText">Numéro de l'album</label>
 			<input type="text" name="albumText"><br>
 			<hr>
-			Code de langue
+			<label for="langCode1">Code de langue</label>
 			<input type="text" name="langCode1"><br>
-			Paroles
-			<textarea type="text" id="lyric1" name="inputText1"></textarea><br>
+			<label for="inputText1">Paroles</label>
+			<textarea type="text" name="inputText1" id="lyric1"></textarea><br>
 			<button type="submit">Submit</button>
 		</form>
-		<button onclick="createInput()">Click me</button>
+		<button class="add-language" onclick="createInput()">Add a language</button>
 
 	</body>
 
@@ -62,15 +63,30 @@
 	function createInput() {
 		clickCount++;
 
+		const label = document.createElement("label");
+		label.setAttribute("for", `langCode${clickCount}`);
+		label.innerHTML = "Language Code";
+		formElm.appendChild(label);
+
 		const input = document.createElement("input");
+		input.setAttribute("type", `text`);
 		input.setAttribute("name", `langCode${clickCount}`);
 		formElm.appendChild(input);
+
+		const br = document.createElement("br");
+		formElm.appendChild(br);
+
+		const label2 = document.createElement("label");
+		label2.setAttribute("for", `inputText${clickCount}`);
+		label2.innerHTML = "Lyrics";
+		formElm.appendChild(label2);
 
 		const textArea = document.createElement("textarea");
 		textArea.setAttribute("name", `inputText${clickCount}`);
 		textArea.setAttribute(`id`, `lyric${clickCount}`);
 		formElm.appendChild(textArea);
-
+		const br2 = document.createElement("br");
+		formElm.appendChild(br2);
 		
 	}
 	</script>
