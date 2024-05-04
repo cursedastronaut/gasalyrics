@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="./res/css/navbar.css"		type="text/css">
 		<link rel="stylesheet" href="./res/css/song_list.css"	type="text/css">
 		<link rel="stylesheet" href="./res/css/song.css"		type="text/css">
+		<link rel="stylesheet" href="./res/css/managing.css"	type="text/css">
 	</head>
 	<body>
 		<?php include_once("res/php/navbar.php") ?>
