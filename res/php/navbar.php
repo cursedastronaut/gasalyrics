@@ -9,9 +9,9 @@
 	$albums = $gs_nav->getAlbums();
 
 	while ($row = mysql_fetch_assoc($albums)) {
-		echo	"<button onclick='location.href=`index.php?album_id=" . $row["idAlbum"] . "`'>"
-		.		"	" . $row["shortTitle"]
-		.		"</button>";
+		echo	"<a href='index.php?album_id=" . $row["idAlbum"] . "'>"
+		.		"" . $row["shortTitle"]
+		.		"</a>";
 	}
 	?>
 </header>
