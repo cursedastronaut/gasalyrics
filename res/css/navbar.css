@@ -25,7 +25,7 @@
 	}
 }
 
-@media (pointer:none), (pointer:coarse), screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
 	:root {
 		--navbar-flex-direction:	column;
 		--navbar-font-size:			x-large;
@@ -68,6 +68,7 @@ header button, header a:not(a[href="index.php"]) {
 	transition:			0.3s;
 	width:				100%;
 	padding-top:		calc(var(--navbar-height)/2 - 16px);
+	padding-bottom:		calc(var(--navbar-height)/2 - 16px);
 	margin:				0;
 	text-align:			center;
 }
