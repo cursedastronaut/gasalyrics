@@ -5,9 +5,10 @@
 	include_once("res/php/connection.php");
 
 	$result = $gs->getSongs($_GET["album_id"]);
-	while ($row =  mysql_fetch_assoc($result)) {
-		echo "<a href='index.php?song_id=" . $row["idSongs"] . "' class='song'>" . $row["titleSongs"] . "</a>";
+	if ($result != -1) {
+		while ($row =  mysql_fetch_assoc($result)) {
+			echo "<a href='index.php?song_id=" . $row["idSongs"] . "' class='song'>" . $row["titleSongs"] . "</a>";
+		}
 	}
-
 	?>
 </main>
