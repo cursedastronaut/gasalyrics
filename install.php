@@ -22,7 +22,8 @@
 
 <?php //Installation script
 	require_once("res/php/config.php"); //Main configuration file.
-
+	require("res/php/version.php");
+	
 	//Attempt connecting to the database with res/php/config.php's logins.
 	$db =	mysql_connect(GASALYRICS_URL, GASALYRICS_DBUSERNAME, GASALYRICS_DBPASSWORD)
 			or die("<b>FATAL:</b>Could not connect to the database, make sure <file>res/php/config.php</file> is correct.");
@@ -149,7 +150,7 @@
 	<input type="text" name="username"><br>
 	<label for="password">Database Password</label>
 	<input type="password" name="password"><br>
-	<p style="font-size=smaller">
+	<p style="font-size:smaller">
 		Those are required to verify you are the person who edited <file>config.php</file>.
 		Please enter the same logins as in <file>config.php</file>.
 	</p>
