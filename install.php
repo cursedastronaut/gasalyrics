@@ -117,7 +117,7 @@
 		. "  KEY `idSongs` (`idSongs`)"
 		. ") ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;";
 
-		$sqlError = "<b>FATAL:</b> Could not create a required table.<br><b>SQL Error:</b>";
+		$sqlError = "<b>FATAL:</b> Could not create a required table. You will need to DROP the tables this script already created after fixing this.<br><b>SQL Error:</b>";
 
 		//Creating the tables, erroring if it failed.
 		mysql_query($sqlAlbum		) or die($sqlError . mysql_error() . "<br><br><b>SQL:</b>" . $sqlAlbum		. mysql_close());
