@@ -23,50 +23,51 @@ Règles Songs: Rules of table Songs
 ### Creating the tables
 
 ```sql
--- Création de la table Album
+--Creation of Album table
 CREATE TABLE IF NOT EXISTS `Album` (
-	`idAlbum` INT(11) NOT NULL AUTO_INCREMENT,
-	`titleAlbum` VARCHAR(128),
-	`iconLinkAlbum` TEXT,
-	`shortTitle` VARCHAR(50),
-	PRIMARY KEY  (`idAlbum`)
-);
+  `idAlbum` int(11) NOT NULL auto_increment,
+  `titleAlbum` varchar(128) collate latin1_general_ci default NULL,
+  `iconLinkAlbum` text collate latin1_general_ci,
+  `shortTitle` varchar(50) collate latin1_general_ci default NULL,
+  PRIMARY KEY  (`idAlbum`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
--- Création de la table Languages
+--Creation of Languages table
 CREATE TABLE IF NOT EXISTS `Languages` (
-	`idLang` INT(11) NOT NULL AUTO_INCREMENT,
-	`langLyrics` VARCHAR(3) NOT NULL,
-	`nameLang` TEXT NOT NULL,
-	PRIMARY KEY  (`idLang`),
-	UNIQUE KEY `langLyrics` (`langLyrics`)
-);
+  `idLang` int(11) NOT NULL auto_increment,
+  `langLyrics` varchar(3) collate latin1_general_ci NOT NULL,
+  `nameLang` text collate latin1_general_ci NOT NULL,
+  PRIMARY KEY  (`idLang`),
+  UNIQUE KEY `langLyrics` (`langLyrics`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
--- Création de la table Lyrics
+--Creation of Lyrics table
 CREATE TABLE IF NOT EXISTS `Lyrics` (
-	`idLyrics` INT(11) NOT NULL AUTO_INCREMENT,
-	`langLyrics` VARCHAR(128),
-	`contentLyrics` TEXT,
-	`idSongsLyrics` INT(11) NULL,
-	PRIMARY KEY  (`idLyrics`)
-);
+  `idLyrics` int(11) NOT NULL auto_increment,
+  `langLyrics` varchar(128) character set latin1 collate latin1_general_ci default NULL,
+  `contentLyrics` text character set utf8 collate utf8_unicode_ci,
+  `idSongsLyrics` int(11) default NULL,
+  PRIMARY KEY  (`idLyrics`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Création de la table `Songs`
+--Creation of Songs table
 CREATE TABLE IF NOT EXISTS `Songs` (
-	`idSongs` INT(11) NOT NULL AUTO_INCREMENT,
-	`titleSongs` VARCHAR(128),
-	`titleOriginalSongs` VARCHAR(4096),
-	`albumIdSongs` INT(11) NULL,
-	PRIMARY KEY  (`idSongs`)
-);
+  `idSongs` int(11) NOT NULL auto_increment,
+  `titleSongs` varchar(128) character set utf8 collate utf8_unicode_ci default NULL,
+  `titleOriginalSongs` varchar(4096) character set utf8 collate utf8_unicode_ci default NULL,
+  `albumIdSongs` int(11) default NULL,
+  PRIMARY KEY  (`idSongs`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
--- Création de la table `Symlink`
+
+--Creation of Symlink table
 CREATE TABLE IF NOT EXISTS `Symlink` (
-	`idSymlink` INT(11) NOT NULL AUTO_INCREMENT,
-	`idSongs` INT(11) NOT NULL,
-	`idAlbum` INT(11) NOT NULL,
-	PRIMARY KEY  (`idSymlink`),
-	KEY `idSongs` (`idSongs`)
-);
+  `idSymlink` int(11) NOT NULL auto_increment,
+  `idSongs` int(11) NOT NULL,
+  `idAlbum` int(11) NOT NULL,
+  PRIMARY KEY  (`idSymlink`),
+  KEY `idSongs` (`idSongs`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 ```
 
 ## Configure the SQL access

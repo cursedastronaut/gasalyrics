@@ -1,4 +1,5 @@
 let ii = 2;
+/*
 function transformToEntities(str) {
 	let result = "";
 	for (let i = 0; i < str.length; i++) {
@@ -31,8 +32,8 @@ document.getElementById("songToAdd").addEventListener("submit", function(event) 
 	
 
 	// Submit the form
-	this.submit();
-});
+	//this.submit();
+//});
 
 function morelyrics() {
 	const hiddenInput = document.createElement("input");

@@ -1,3 +1,4 @@
+/*
 function transformToEntities(str) {
 	let result = "";
 	for (let i = 0; i < str.length; i++) {
@@ -21,6 +22,6 @@ document.getElementById("songToAdd").addEventListener("submit", function(event) 
 
     // Submit the form
     this.submit();
-});
+});*/
 
 
