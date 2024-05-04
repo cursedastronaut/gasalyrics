@@ -18,7 +18,7 @@
 			echo $_POST["titleText"] . "<br>" . $_POST["titleOrText"] ."<br>" . $_POST["albumText"] . "<br>" . $_POST["langCode"] . "<br>" . $_POST["inputText1"] . "<br>" . $_POST["inputText2"];
 			echo "<br><br>";
 			$sql = "INSERT INTO Songs (titleSongs, titleOriginalSongs, albumIdSongs) VALUES ('" . $_POST["titleText"] . "','" . $_POST["titleOrText"] . "'," . $_POST["albumText"] . ")";
-			$result = $gs->askSQL($sql);
+			$result = $gs->askSQL($sql, $_POST["username"], $_POST["password"]);
 			$sql = "SELECT idSongs FROM Songs WHERE titleSongs='" . $_POST["titleText"] . "' AND titleOriginalSongs='" . $_POST["titleOrText"] . "' AND albumIdSongs=" . $_POST["albumText"];
 			$result = $gs->askSQL($sql);
 			$row =  mysql_fetch_assoc($result);
@@ -26,13 +26,18 @@
 			for ($numInputText = 1; !is_null($_POST["inputText" . ($numInputText)]); $numInputText++) 
 			{
 				$sql = "INSERT INTO Lyrics (langLyrics, contentLyrics, idSongsLyrics) VALUES ('" . $_POST["langCode" . $numInputText] . "', '" . $_POST["inputText" . $numInputText] . "',  " . $numSong . ")";
-				$result = $gs->askSQL($sql);
+				$result = $gs->askSQL($sql, $_POST["username"], $_POST["password"]);
 				echo $sql . "<br>";
 			}
 		}
 		?>
 		<h1>Add lyrics</h1>
 		<form id="songToAdd" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" >
+			Utilisateur
+			<input type="text" name="username"><br>
+			Mot de passe
+			<input type="password" name="password"><br>
+			<br>
 			Titre anglais
 			<input type="text" name="titleText"><br>
 			Titre orignal

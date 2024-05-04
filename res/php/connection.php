@@ -3,8 +3,8 @@ include_once("config.php");
 
 class GasaLyricsDB {
 	//Sends the SQL command in $sql and returns its result.
-	function askSQL($sql) {
-		$db = mysql_connect(GASALYRICS_URL, GASALYRICS_DBUSERNAME, GASALYRICS_DBPASSWORD) or die("erreur de connexion au serveur");
+	function askSQL($sql, $username = GASALYRICS_DBUSERNAME, $password = GASALYRICS_DBPASSWORD) {
+		$db = mysql_connect(GASALYRICS_URL, $username, $password) or die("Incorrect username or password.");
 		mysql_select_db(GASALYRICS_DBNAME, $db);
 		
 		//UTF-8 characters
@@ -140,6 +140,12 @@ class GasaLyricsDB {
 
 	function getWebsiteURL() {
 		return GASALYRICS_WEBURL;
+	}
+
+	//During debugging, you may create songs with lyrics, and delete the songs after.
+	//This function will remove all Lyrics who are not linked to a song anymore.
+	function removeSonglessLyrics() {
+		$this->askSQL("DELETE FROM Lyrics WHERE idSongsLyrics NOT IN (SELECT idSongs FROM Songs);");
 	}
 
 }
