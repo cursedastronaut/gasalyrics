@@ -6,13 +6,11 @@ class GasaLyricsDB {
 	function askSQL($sql) {
 		$db = mysql_connect(GASALYRICS_URL, GASALYRICS_DBUSERNAME, GASALYRICS_DBPASSWORD) or die("erreur de connexion au serveur");
 		mysql_select_db(GASALYRICS_DBNAME, $db);
-		$sql_utf8 = "SET NAMES 'utf8';";
-		$result = mysql_query($sql_utf8) or die('Erreur SQL !<br>'.$sql_utf8.'<br>'.mysql_error());
-
-		$sql_utf8 ="SET CHARACTER SET 'utf8';";
-		$result = mysql_query($sql_utf8) or die('Erreur SQL !<br>'.$sql_utf8.'<br>'.mysql_error());
-
-		mysql_query("SET COLLATION_CONNECTION = 'utf8_unicode_ci'") or die("Cannot set UTF8 encoding. Exiting.");
+		
+		//UTF-8 characters
+		mysql_query("SET NAMES 'utf8';")							or die('FATAL: <br>'. mysql_error());
+		mysql_query("SET CHARACTER SET 'utf8';")					or die('FATAL: <br>'.$sql_utf8.'<br>'.mysql_error());
+		mysql_query("SET COLLATION_CONNECTION = 'utf8_unicode_ci'")	or die("Cannot set UTF8 encoding. Exiting.");
 
 		$result = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 		mysql_close();
