@@ -1,47 +1,50 @@
 :root {
+	--lyrics-padding-vertical:	16px;
+	--lyrics-padding-inline:	64px;
 	--lyrics-margin: 16px;
-    --button-lang-size: 17px;
+	--button-lang-size:	17px;
 }
 @media (pointer:none), (pointer:coarse) {
-    :root {
-        --lyrics-margin: 32px;
-        --button-lang-size: 48px;
-    }
-    lyrics {
-        font-size: xxx-large;
-    }
+	:root {
+		--lyrics-margin: 32px;
+		--button-lang-size: 48px;
+	}
+	lyrics {
+		font-size: xxx-large;
+	}
 }
 
 lyrics {
 	text-align: center;
 	display: inline-block;
 	border: solid 1px;
-    border-color: #E5E5E5;
-    border-width: thin;
-    border-radius: 25px;
-    box-shadow: 2px 2px 5px gray;
-	margin: var(--lyrics-margin);
-	padding-inline: 16px;
-    transition: 0.3s;
-    width:  fit-content;
+	border-color: #E5E5E5;
+	border-width: thin;
+	border-radius: 25px;
+	box-shadow: 2px 2px 5px gray;
+	padding:		var(--lyrics-padding-vertical);
+	padding-inline: 0px;
+	margin-bottom: var(--lyrics-margin);
+	transition: 0.3s;
+	width:  fit-content;
 }
 
 button.language {
-    text-align: center;
+	text-align: center;
 	border: none;
-    background-color: rgba(0, 0, 0, 0);
-    color: #529cde;
-    font-size: var(--button-lang-size);
-    margin-bottom: 5px;
-    font-weight: bold;
-    width:fit-content;
+	background-color: rgba(0, 0, 0, 0);
+	color: #529cde;
+	font-size: var(--button-lang-size);
+	padding-inline:	calc( var(--lyrics-padding-vertical) * 2 );
+	font-weight: bold;
+	width:fit-content;
 }
 
 lyrics p {
 	color: black;
-    font-family: Trebuchet MS, helvetica, sans-serif;
-    text-align: center;
-    transition: 0.3s;
+	font-family: Trebuchet MS, helvetica, sans-serif;
+	text-align: center;
+	transition: 0.3s;
 	display: block;
 	font-size: 0;
 }
