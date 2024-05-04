@@ -72,27 +72,27 @@
 		$sqlAlbum = ""
 		. "CREATE TABLE IF NOT EXISTS `Album` ("
 		. "  `idAlbum` int(11) NOT NULL auto_increment,"
-		. "  `titleAlbum` varchar(128) collate latin1_general_ci default NULL,"
-		. "  `iconLinkAlbum` text collate latin1_general_ci,"
-		. "  `shortTitle` varchar(50) collate latin1_general_ci default NULL,"
+		. "  `titleAlbum` varchar(128) collate utf8_unicode_ci default NULL,"
+		. "  `iconLinkAlbum` text collate utf8_unicode_ci,"
+		. "  `shortTitle` varchar(50) collate utf8_unicode_ci default NULL,"
 		. "  PRIMARY KEY  (`idAlbum`)"
-		. ") ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;";
+		. ") ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
 		
 		//Creation of table Languages.
 		$sqlLanguages = ""
 		. "CREATE TABLE IF NOT EXISTS `Languages` ("
 		. "  `idLang` int(11) NOT NULL auto_increment,"
-		. "  `langLyrics` varchar(3) collate latin1_general_ci NOT NULL,"
-		. "  `nameLang` text collate latin1_general_ci NOT NULL,"
+		. "  `langLyrics` varchar(3) collate utf8_unicode_ci NOT NULL,"
+		. "  `nameLang` text collate utf8_unicode_ci NOT NULL,"
 		. "  PRIMARY KEY  (`idLang`),"
 		. "  UNIQUE KEY `langLyrics` (`langLyrics`)"
-		. ") ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;";
+		. ") ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
 		
 		//Creation of table Lyrics.
 		$sqlLyrics = ""
 		. "CREATE TABLE IF NOT EXISTS `Lyrics` ("
 		. "  `idLyrics` int(11) NOT NULL auto_increment,"
-		. "  `langLyrics` varchar(128) character set latin1 collate latin1_general_ci default NULL,"
+		. "  `langLyrics` varchar(128) character set utf8 collate utf8_unicode_ci default NULL,"
 		. "  `contentLyrics` text character set utf8 collate utf8_unicode_ci,"
 		. "  `idSongsLyrics` int(11) default NULL,"
 		. "  PRIMARY KEY  (`idLyrics`)"
@@ -106,7 +106,7 @@
 		. "  `titleOriginalSongs` varchar(4096) character set utf8 collate utf8_unicode_ci default NULL,"
 		. "  `albumIdSongs` int(11) default NULL,"
 		. "  PRIMARY KEY  (`idSongs`)"
-		. ") ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;";
+		. ") ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
 		
 		//Creation of table Symlink.
 		$sqlSymlink = ""
@@ -116,7 +116,7 @@
 		. "  `idAlbum` int(11) NOT NULL,"
 		. "  PRIMARY KEY  (`idSymlink`),"
 		. "  KEY `idSongs` (`idSongs`)"
-		. ") ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;";
+		. ") ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
 
 		$sqlError = "<b>FATAL:</b> Could not create a required table. You will need to DROP the tables this script already created after fixing this.<br><b>SQL Error:</b>";
 
