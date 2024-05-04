@@ -26,7 +26,7 @@
 			$numSong = $row["idSongs"];
 			for ($numInputText = 1; !is_null($_POST["inputText" . ($numInputText)]); $numInputText++) 
 			{
-				$sql = "INSERT INTO Lyrics (langLyrics, contentLyrics, idSongsLyrics) VALUES ('" . $_POST["langCode" . $numInputText] . "', '" . $_POST["inputText" . $numInputText] . "',  " . $numSong . ")";
+				$sql = "INSERT INTO Lyrics (langLyrics, contentLyrics, idSongsLyrics) VALUES ('" . $_POST["langCode" . $numInputText] . "', '" . $gs->replaceNewlinesByBR($_POST["inputText" . $numInputText]) . "',  " . $numSong . ")";
 				$result = $gs->askSQL($sql, $_POST["username"], $_POST["password"]);
 				echo $sql . "<br>";
 			}

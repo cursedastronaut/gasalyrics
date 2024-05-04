@@ -76,13 +76,13 @@ function createInput() {
 		. "WHERE idSongs=" . $_GET["song_id"] . ";";
 
 		$sql_get_lyrics = "SELECT idLyrics FROM Lyrics WHERE idSongsLyrics=" . $_GET["song_id"] . ";";
-		$result_get_lyrics = $gs->askSQL($sql, $_POST["username"], $_POST["password"]);
+		$result_get_lyrics = $gs->askSQL($sql_get_lyrics, $_POST["username"], $_POST["password"]);
 
 		while ($row =  mysql_fetch_assoc($result_get_lyrics)) {
-			$sqlLyrics = "UPDATE Lyrics SET contentLyrics='" . $_POST["inputText" . $row["idLyrics"]] . "', "
+			$sqlLyrics = "UPDATE Lyrics SET contentLyrics='" . $gs->replaceNewlinesByBR($_POST["inputText" . $row["idLyrics"]]) . "', "
 				. "langLyrics='" . $_POST["langCode" . $row["idLyrics"]] . "' "
 				. "WHERE idLyrics=" . $row["idLyrics"] . ";";
-			$dummy2 = $gs->askSQL($sql, $_POST["username"], $_POST["password"]);
+			$dummy2 = $gs->askSQL($sqlLyrics, $_POST["username"], $_POST["password"]);
 		}
 
 		$dummy2 = $gs->askSQL($sql, $_POST["username"], $_POST["password"]);

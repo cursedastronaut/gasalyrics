@@ -148,6 +148,10 @@ class GasaLyricsDB {
 		$this->askSQL("DELETE FROM Lyrics WHERE idSongsLyrics NOT IN (SELECT idSongs FROM Songs);");
 	}
 
+	function replaceNewlinesByBR($str) {
+		return str_replace("\n", "<br>", $str);
+	}
+
 }
 
 ?>
