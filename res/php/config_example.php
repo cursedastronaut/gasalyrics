@@ -4,5 +4,5 @@
 	define("GASALYRICS_DBPASSWORD",	"password");
 	define("GASALYRICS_DBNAME",		"gasalyrics");
 	define("GASALYRICS_WEBURL",		"http://example.com/gasa/"); //The slash at the end is important!
-
+	define("GASALYRICS_CONTACT",	"<a href='mailto:contact@example.com'>contact@example.com</a>");
 ?>

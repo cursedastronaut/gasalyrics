@@ -6,10 +6,11 @@
 		<link rel="stylesheet" href="./res/css/song_list.css"	type="text/css">
 		<link rel="stylesheet" href="./res/css/song.css"		type="text/css">
 		<link rel="stylesheet" href="./res/css/album_list.css"	type="text/css">
+		<link rel="stylesheet" href="./res/css/footer.css"		type="text/css">
 	</head>
 	<body>
-		<?php include_once("res/php/navbar.php") ?>
 		<?php
+		include_once("res/php/navbar.php");
 		$gs = new GasaLyricsDB();
 
 		if (!is_null($_GET["song_id"]))
@@ -36,8 +37,8 @@
 			}
 			echo "<title>GasaLyrics</title>";
 		}
+		include("res/php/footer.php");
 		?>
 	</body>
-
 </html>
 

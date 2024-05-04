@@ -1,0 +1,17 @@
+footer {
+	background: #292b2b;
+	text-align: center;
+	margin-top: 100%;
+	padding: var(--lyrics-margin);
+}
+
+footer a {
+	color: lightgrey;
+	font-family: var(--navbar-font);
+}
+
+body {
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+}
