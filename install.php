@@ -134,6 +134,8 @@
 				. "to add an album.<br>"
 				. "To add a song, go to the <a href='add.php'>Add Song page</a>.<br>"
 				. "To edit a song, go to the <a href='manage.php>Manage Songs page</a>.<br>"
+				. "<br><br><b>CRITICAL!!!</b> Run the script at <file>res/sql/languages.sql</file> to fill the"
+				. "Languages table as there is currently no way to do so through pages."
 				;
 
 		exit();
