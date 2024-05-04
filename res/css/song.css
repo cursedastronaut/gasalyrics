@@ -3,11 +3,13 @@
 	--lyrics-padding-inline:	64px;
 	--lyrics-margin: 16px;
 	--button-lang-size:	17px;
+	--lyrics-transition: 0.3s;
 }
 @media (pointer:none), (pointer:coarse) {
 	:root {
 		--lyrics-margin: 32px;
 		--button-lang-size: 48px;
+		--lyrics-transition: 0s;
 	}
 	lyrics {
 		font-size: xxx-large;
@@ -25,7 +27,7 @@ lyrics {
 	padding:		var(--lyrics-padding-vertical);
 	padding-inline: 0px;
 	margin-bottom: var(--lyrics-margin);
-	transition: 0.3s;
+	transition: var(--lyrics-transition);
 	width:  fit-content;
 }
 
@@ -44,7 +46,7 @@ lyrics p {
 	color: black;
 	font-family: Trebuchet MS, helvetica, sans-serif;
 	text-align: center;
-	transition: 0.3s;
+	transition: var(--lyrics-transition);
 	display: block;
 	font-size: 0;
 }
