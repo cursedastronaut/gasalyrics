@@ -72,15 +72,15 @@ function createInput() {
 
 <?php
 	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['formSubmitted']) && $_POST['formSubmitted'] == "1") {
-		$sql = "UPDATE Songs SET titleSongs='" . $_POST["titleText"] . "', titleOriginalSongs='" . $_POST["titleOrText"] . "', albumIdSongs=" . $_POST["albumText"] . " "
+		$sql = "UPDATE Songs SET titleSongs='" . $gs->sanitize($_POST["titleText"]) . "', titleOriginalSongs='" . $gs->sanitize($_POST["titleOrText"]) . "', albumIdSongs=" . $gs->sanitize($_POST["albumText"]) . " "
 		. "WHERE idSongs=" . $_GET["song_id"] . ";";
 
 		$sql_get_lyrics = "SELECT idLyrics FROM Lyrics WHERE idSongsLyrics=" . $_GET["song_id"] . ";";
 		$result_get_lyrics = $gs->askSQL($sql_get_lyrics, $_POST["username"], $_POST["password"]);
 
 		while ($row =  mysql_fetch_assoc($result_get_lyrics)) {
-			$sqlLyrics = "UPDATE Lyrics SET contentLyrics='" . $gs->replaceNewlinesByBR($_POST["inputText" . $row["idLyrics"]]) . "', "
-				. "langLyrics='" . $_POST["langCode" . $row["idLyrics"]] . "' "
+			$sqlLyrics = "UPDATE Lyrics SET contentLyrics='" . $gs->sanitize($_POST["inputText" . $row["idLyrics"]]) . "', "
+				. "langLyrics='" . $gs->sanitize($_POST["langCode" . $row["idLyrics"]]) . "' "
 				. "WHERE idLyrics=" . $row["idLyrics"] . ";";
 			$dummy2 = $gs->askSQL($sqlLyrics, $_POST["username"], $_POST["password"]);
 		}
