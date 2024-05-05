@@ -38,7 +38,7 @@
 		$result = $gs->getLyrics($_GET["song_id"]);
 		for ($i = 0; $row =  mysql_fetch_assoc($result); $i+=1) {
 			echo "<center><lyrics>" . "<button class='language' onclick='toggleDisplay(`lyrics-p" . $i . "`)'>" . $gs->langToDisplayName($row["idLang"]) . "</button>";
-			echo "<p id='lyrics-p" . $i . "'>" . $row["contentLyrics"] . "</p></lyrics></center>";
+			echo "<p id='lyrics-p" . $i . "'>" . $gs->unsanitize($row["contentLyrics"]) . "</p></lyrics></center>";
 		}
 	}
 	?>
