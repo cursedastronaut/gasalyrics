@@ -2,3 +2,4 @@ res/php/config.php
 res/jpg/**
 remove.php
 res/sql/mcd.lo1
+res/sql/backup.sql
