@@ -92,7 +92,7 @@
 		$sqlLyrics = ""
 		. "CREATE TABLE IF NOT EXISTS `Lyrics` ("
 		. "  `idLyrics` int(11) NOT NULL auto_increment,"
-		. "  `langLyrics` varchar(128) character set utf8 collate utf8_unicode_ci default NULL,"
+		. "  `idLang` int(11) NOT NULL,"
 		. "  `contentLyrics` text character set utf8 collate utf8_unicode_ci,"
 		. "  `idSongsLyrics` int(11) default NULL,"
 		. "  PRIMARY KEY  (`idLyrics`)"
