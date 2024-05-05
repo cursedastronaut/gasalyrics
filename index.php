@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<div class="flex">
-			<div>
+			<div style="width: 100%;">
 				<?php
 				include_once("res/php/navbar.php");
 				$gs = new GasaLyricsDB();
