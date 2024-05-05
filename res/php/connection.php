@@ -165,6 +165,16 @@ class GasaLyricsDB {
 		return $str;
 	}
 
+	//Chrome fix: It seems that the HTML entity for quotes gets either doubled or not considered as a quote.
+	//Replaces HTML entities for some quotes by their actual character. Mustn't be used for an INSERT.
+	function unsanitize($str) {
+		$str = str_replace("&#x27;",		"'",	$str);
+		$str = str_replace('&#x22;',		'"',	$str);
+		$str = str_replace('&quot;',		'"',	$str);
+		$str = str_replace('&#x60;',		"`",	$str);
+		return $str;
+	}
+
 }
 
 ?>
