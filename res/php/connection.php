@@ -66,15 +66,22 @@ class GasaLyricsDB {
 		}
 	}
 
+	function getLanguages() {
+		$result = $this->askSQL("SELECT * from Languages");
+		if (!$result)
+			return -1;
+		return $result;
+	}
+
 	//Returns the name of the language whose id is the parameter.
 	function langToDisplayName($lang) {
 		
-		$sql = "SELECT nameLang from Languages WHERE langLyrics='" . $lang . "';";
+		$sql = "SELECT nameLang from Languages WHERE idLang='" . $lang . "';";
 		$result = $this->askSQL($sql);
-		if ($result->num_rows < 0)
-			return "Unknown language";
-
+		
 		$output = mysql_fetch_assoc($result);
+		if (!$output)
+			return "Unknown language";
 
 		return $output["nameLang"];
 	}

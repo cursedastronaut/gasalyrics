@@ -23,12 +23,23 @@
 	<?php
 		$sql = "SELECT * FROM Lyrics WHERE idSongsLyrics=" . $_GET["song_id"] . ";";
 		$result = $gs->askSQL($sql);
-
-		while ($row =  mysql_fetch_assoc($result)) {
-			echo "<label for='langCode" . $row["idLyrics"] . "'>Code de langue</label>";
-			echo "<input type='text' name='langCode" . $row["idLyrics"] . "' value='" . $row["langLyrics"] . "'><br>";
-			echo "<label for='lyric" . $row["idLyrics"] . "'>Paroles</label>";
-			echo "<textarea type='text' id='lyric" . $row["idLyrics"] . "' name='inputText" . $row["idLyrics"] . "'>" . str_replace("<br>", "\n", $row["contentLyrics"]) . "</textarea><br>";
+		$languages = $gs->getLanguages();
+		if ($languages != -1) {
+			while ($row =  mysql_fetch_assoc($result)) {
+				echo "<label for='langCode" . $row["idLyrics"] . "'>Code de langue</label>";
+				echo "<select type='text' name='langCode" . $row["idLyrics"] . "'>";
+				mysql_data_seek($languages, 0);
+				while ($rowLang = mysql_fetch_assoc($languages)) {
+					echo	"<option value='lang_" . $rowLang["idLang"]
+					. "' " . (($rowLang["idLang"] == $row["idLang"]) ? "selected='selected'" : "")
+					.  "'>"
+					.		"" . $rowLang["nameLang"]
+					.		"</option>";
+				}
+				echo "</select><br>";
+				echo "<label for='lyric" . $row["idLyrics"] . "'>Paroles</label>";
+				echo "<textarea type='text' id='lyric" . $row["idLyrics"] . "' name='inputText" . $row["idLyrics"] . "'>" . str_replace("<br>", "\n", $row["contentLyrics"]) . "</textarea><br>";
+			}
 		}
 	?>
 	<!-- Hidden input field to indicate form submission -->
@@ -88,14 +99,14 @@ function createInput() {
 
 		while ($row =  mysql_fetch_assoc($result_get_lyrics)) {
 			$sqlLyrics = "UPDATE Lyrics SET contentLyrics='" . $gs->sanitize($_POST["inputText" . $row["idLyrics"]]) . "', "
-				. "langLyrics='" . $gs->sanitize($_POST["langCode" . $row["idLyrics"]]) . "' "
+				. "idLang=" .  intval(str_replace("lang_", "", $gs->sanitize($_POST["langCode" . $row["idLyrics"]]))) . " "
 				. "WHERE idLyrics=" . $row["idLyrics"] . ";";
 			$dummy2 = $gs->askSQL($sqlLyrics, $_POST["username"], $_POST["password"]);
 		}
 
 		$dummy2 = $gs->askSQL($sql, $_POST["username"], $_POST["password"]);
 
-		echo "done!";
+		echo "Done!";
 	}
 ?>
 
