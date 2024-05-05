@@ -68,64 +68,23 @@
 	//If used pressed the "Proceed with the installation" button.
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-		//Creation of table Album.
-		$sqlAlbum = ""
-		. "CREATE TABLE IF NOT EXISTS `Album` ("
-		. "  `idAlbum` int(11) NOT NULL auto_increment,"
-		. "  `titleAlbum` varchar(128) collate utf8_unicode_ci default NULL,"
-		. "  `iconLinkAlbum` text collate utf8_unicode_ci,"
-		. "  `shortTitle` varchar(50) collate utf8_unicode_ci default NULL,"
-		. "  PRIMARY KEY  (`idAlbum`)"
-		. ") ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
+		$sqlCreation = file_get_contents("res/sql/creation.sql");
+		$sqlStatements = explode(";", $sqlCreation);
 		
-		//Creation of table Languages.
-		$sqlLanguages = ""
-		. "CREATE TABLE IF NOT EXISTS `Languages` ("
-		. "  `idLang` int(11) NOT NULL auto_increment,"
-		. "  `langLyrics` varchar(3) collate utf8_unicode_ci NOT NULL,"
-		. "  `nameLang` text collate utf8_unicode_ci NOT NULL,"
-		. "  PRIMARY KEY  (`idLang`),"
-		. "  UNIQUE KEY `langLyrics` (`langLyrics`)"
-		. ") ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-		
-		//Creation of table Lyrics.
-		$sqlLyrics = ""
-		. "CREATE TABLE IF NOT EXISTS `Lyrics` ("
-		. "  `idLyrics` int(11) NOT NULL auto_increment,"
-		. "  `idLang` int(11) NOT NULL,"
-		. "  `contentLyrics` text character set utf8 collate utf8_unicode_ci,"
-		. "  `idSongsLyrics` int(11) default NULL,"
-		. "  PRIMARY KEY  (`idLyrics`)"
-		. ") ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;";
-		
-		//Creation of table Songs.
-		$sqlSongs = ""
-		. "CREATE TABLE IF NOT EXISTS `Songs` ("
-		. "  `idSongs` int(11) NOT NULL auto_increment,"
-		. "  `titleSongs` varchar(128) character set utf8 collate utf8_unicode_ci default NULL,"
-		. "  `titleOriginalSongs` varchar(4096) character set utf8 collate utf8_unicode_ci default NULL,"
-		. "  `albumIdSongs` int(11) default NULL,"
-		. "  PRIMARY KEY  (`idSongs`)"
-		. ") ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-		
-		//Creation of table Symlink.
-		$sqlSymlink = ""
-		. "CREATE TABLE IF NOT EXISTS `Symlink` ("
-		. "  `idSymlink` int(11) NOT NULL auto_increment,"
-		. "  `idSongs` int(11) NOT NULL,"
-		. "  `idAlbum` int(11) NOT NULL,"
-		. "  PRIMARY KEY  (`idSymlink`),"
-		. "  KEY `idSongs` (`idSongs`)"
-		. ") ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
-
 		$sqlError = "<b>FATAL:</b> Could not create a required table. You will need to DROP the tables this script already created after fixing this.<br><b>SQL Error:</b>";
 		$sqlLanguagesInsert = file_get_contents("res/sql/languages.sql");
-		//Creating the tables, erroring if it failed.
-		mysql_query($sqlAlbum			) or die($sqlError				. mysql_error() . "<br><br><b>SQL:</b>" . $sqlAlbum				. mysql_close());
-		mysql_query($sqlLanguages		) or die($sqlError				. mysql_error() . "<br><br><b>SQL:</b>" . $sqlLanguage			. mysql_close());
-		mysql_query($sqlLyrics			) or die($sqlError				. mysql_error() . "<br><br><b>SQL:</b>" . $sqlLyrics			. mysql_close());
-		mysql_query($sqlSongs			) or die($sqlError				. mysql_error() . "<br><br><b>SQL:</b>" . $sqlSongs				. mysql_close());
-		mysql_query($sqlSymlink			) or die($sqlError				. mysql_error() . "<br><br><b>SQL:</b>" . $sqlSymlink			. mysql_close());
+
+		//Untested! Please execute manually the content of res/sql/creation.sql if it causes a problem.
+		// Loop through each SQL statement
+		foreach ($sqlStatements as $sql) {
+			// Trim any leading or trailing whitespace
+			$sql = trim($sql);
+			// Check if the statement is not empty
+			if (!empty($sql)) {
+				// Execute the SQL statement
+				mysql_query($sql) or die($sqlError . mysql_error() . "<br><br><b>SQL:</b>" . $sql . mysql_close());
+			}
+		}
 		//Untested! Remove if causing problems!
 		mysql_query($sqlLanguagesInsert	) or die($sqlLanguagesInsert	. mysql_error() . "<br><br><b>SQL:</b>" . $sqlLanguagesInsert	. mysql_close());
 
