@@ -1,3 +1,3 @@
 <?php
-	define("GASALYRICS_VERSION", "'v1.1.0'");
+	define("GASALYRICS_VERSION", "'v1.1.1'");
 ?>
