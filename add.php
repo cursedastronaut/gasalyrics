@@ -26,7 +26,9 @@
 			$numSong = $row["idSongs"];
 			for ($numInputText = 1; !is_null($_POST["inputText" . ($numInputText)]); $numInputText++) 
 			{
-				$sql = "INSERT INTO Lyrics (langLyrics, contentLyrics, idSongsLyrics) VALUES ('" . $gs->sanitize($_POST["langCode" . $numInputText]) . "', '" . $gs->sanitize($_POST["inputText" . $numInputText]) . "',  " . $numSong . ")";
+				$sql = "INSERT INTO Lyrics (idLang, contentLyrics, idSongsLyrics) VALUES ("
+				. intval(str_replace("lang_", "", $gs->sanitize($_POST["langCode" . $numInputText])))
+				. ", '" . $gs->sanitize($_POST["inputText" . $numInputText]) . "',  " . $numSong . ")";
 				$result = $gs->askSQL($sql, $_POST["username"], $_POST["password"]);
 				echo $sql . "<br>";
 			}
@@ -47,8 +49,21 @@
 			<label for="albumText">Album number</label>
 			<input type="text" name="albumText"><br>
 			<hr>
-			<label for="langCode1">Language code</label>
-			<input type="text" name="langCode1"><br>
+			<label for="langCode1">Language</label>
+			<select type="text" name="langCode1"><br>
+			<?php
+				$gs = new GasaLyricsDB();
+				$languages = $gs->getLanguages();
+				echo $languages;
+				if ($languages != -1) {
+					while ($row = mysql_fetch_assoc($languages)) {
+						echo	"<option value='lang_" . $row["idLang"] . "'>"
+						.		"" . $row["nameLang"]
+						.		"</option>";
+					}
+				}
+			?>
+			</select>
 			<label for="inputText1">Lyrics</label>
 			<textarea type="text" name="inputText1" id="lyric1"></textarea><br>
 		</form>
@@ -68,10 +83,18 @@
 		label.innerHTML = "Language Code";
 		formElm.appendChild(label);
 
-		const input = document.createElement("input");
-		input.setAttribute("type", `text`);
-		input.setAttribute("name", `langCode${clickCount}`);
-		formElm.appendChild(input);
+		const select = document.createElement("select");
+		select.setAttribute("type", `text`);
+		select.setAttribute("name", `langCode${clickCount}`);
+		formElm.appendChild(select);
+
+		// Copy options from langCode1 select
+		const langCode1Select = document.querySelector('select[name="langCode1"]');
+		const options = langCode1Select.querySelectorAll('option');
+		options.forEach(option => {
+			const clonedOption = option.cloneNode(true);
+			select.appendChild(clonedOption);
+		});
 
 		const br = document.createElement("br");
 		formElm.appendChild(br);
