@@ -103,3 +103,4 @@ INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (102,	'yo',	'Yorù
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (103,	'zu',	'isiZulu');
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (104,	'kp',	'조선말');
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (105,	'kr',	'한국어');
+INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (106,	'ins',	'Instrumental');
