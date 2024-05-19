@@ -75,7 +75,7 @@ INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (071,	'pt',	'Portu
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (072,	'pa',	'ਪੰਜਾਬੀ');
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (073,	'ro',	'Română');
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (074,	'ru',	'Русский');
-INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (075,	'sm',	'gagana fa&#x27;a Samoa');
+INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (075,	'sm',	'gagana fa\'a Samoa');
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (076,	'gd',	'Gàidhlig');
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (077,	'sr',	'српски језик');
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (078,	'st',	'Sesotho');
