@@ -74,6 +74,7 @@
 		$sqlError = "<b>FATAL:</b> Could not create a required table. You will need to DROP the tables this script already created after fixing this.<br><b>SQL Error:</b>";
 		$sqlLanguagesInsert = file_get_contents("res/sql/languages.sql");
 
+		//Untested! Please execute manually the content of res/sql/creation.sql if it causes a problem.
 		// Loop through each SQL statement
 		foreach ($sqlStatements as $sql) {
 			// Trim any leading or trailing whitespace
