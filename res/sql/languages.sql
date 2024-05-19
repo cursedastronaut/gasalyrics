@@ -1,3 +1,6 @@
+SET NAMES 'utf8';
+SET CHARACTER SET 'utf8';
+SET COLLATION_CONNECTION = 'utf8_unicode_ci';
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (001,	'af',	'Afrikaans');
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (002,	'sq',	'Shqip');
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (003,	'am',	'አማርኛ');
