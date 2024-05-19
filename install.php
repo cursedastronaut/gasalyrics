@@ -85,9 +85,19 @@
 				mysql_query($sql) or die($sqlError . mysql_error() . "<br><br><b>SQL:</b>" . $sql . mysql_close());
 			}
 		}
-		//Untested! Remove if causing problems!
-		mysql_query($sqlLanguagesInsert	) or die($sqlLanguagesInsert	. mysql_error() . "<br><br><b>SQL:</b>" . $sqlLanguagesInsert	. mysql_close());
-
+		
+		// Split the SQL statements by ';'
+		$sqlStatements = explode(';', $sqlLanguagesInsert);
+		// Execute each SQL statement
+		foreach ($sqlStatements as $sqlStatement) {
+			// Trim any whitespace or new lines
+			$sqlStatement = trim($sqlStatement);
+			
+			// Check if the statement is not empty
+			if (!empty($sqlStatement)) {
+				mysql_query($sqlStatement) or die($sqlStatement . mysql_error() . "<br><br><b>SQL:</b>" . $sqlStatement . mysql_close());
+			}
+		}
 		mysql_close(); //Rest.
 
 		echo	"<br><success>SUCCESS:</success>Successfully created all tables.<br>"
