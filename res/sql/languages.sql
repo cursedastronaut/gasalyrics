@@ -33,7 +33,7 @@ INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (029,	'el',	'ελ�
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (030,	'gu',	'ગુજરાતી');
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (031,	'ht',	'Kreyòl ayisyen');
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (032,	'ha',	'هَوُسَ');
-INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (033,	'haw',	'&#x27;Ōlelo Hawai&#x27;i');
+INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (033,	'haw',	'\'Ōlelo Hawai\'i');
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (034,	'iw',	'עברית');
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (035,	'hi',	'हिन्दी, हिंदी');
 INSERT INTO Languages (	idLang,	langLyrics,	nameLang ) VALUES (036,	'hmn',	'Hmoob');
