@@ -6,8 +6,6 @@
 	Indentation is using tabs with a size
 	equivalent to 4 spaces.
 -->
-
-<!--Quick and dirty style, this file shall not call anything else than 'res/php/config.php'.-->
 <style>
 	file {
 		background-color:	black;
